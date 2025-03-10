@@ -1,4 +1,73 @@
-# Python program for simple calculator
+#Simple calculator with Tkinter 
+import tkinter as tk
+from tkinter import messagebox
+
+def add():
+    try:
+        num1 = float(entry1.get())
+        num2 = float(entry2.get())
+        result.set(num1 + num2)
+    except ValueError:
+        messagebox.showerror("Input Error", "Please enter valid numbers")
+
+def subtract():
+    try:
+        num1 = float(entry1.get())
+        num2 = float(entry2.get())
+        result.set(num1 - num2)
+    except ValueError:
+        messagebox.showerror("Input Error", "Please enter valid numbers")
+
+def multiply():
+    try:
+        num1 = float(entry1.get())
+        num2 = float(entry2.get())
+        result.set(num1 * num2)
+    except ValueError:
+        messagebox.showerror("Input Error", "Please enter valid numbers")
+
+def divide():
+    try:
+        num1 = float(entry1.get())
+        num2 = float(entry2.get())
+        if num2 == 0:
+            messagebox.showerror("Math Error", "Cannot divide by zero")
+        else:
+            result.set(num1 / num2)
+    except ValueError:
+        messagebox.showerror("Input Error", "Please enter valid numbers")
+
+# Create main window
+root = tk.Tk()
+root.title("Simple Calculator")
+
+# Create input fields and labels
+tk.Label(root, text="Enter first number:").grid(row=0, column=0)
+entry1 = tk.Entry(root)
+entry1.grid(row=0, column=1)
+
+tk.Label(root, text="Enter second number:").grid(row=1, column=0)
+entry2 = tk.Entry(root)
+entry2.grid(row=1, column=1)
+
+# Create buttons
+tk.Button(root, text="Add", command=add).grid(row=2, column=0)
+tk.Button(root, text="Subtract", command=subtract).grid(row=2, column=1)
+tk.Button(root, text="Multiply", command=multiply).grid(row=3, column=0)
+tk.Button(root, text="Divide", command=divide).grid(row=3, column=1)
+
+# Display result
+result = tk.StringVar()
+tk.Label(root, text="Result:").grid(row=4, column=0)
+tk.Entry(root, textvariable=result, state="readonly").grid(row=4, column=1)
+
+# Run the application
+root.mainloop()
+
+
+
+
+# Python program for simple calculator without Tkinter 
 
 # Function to add two numbers
 def add(num1, num2):
